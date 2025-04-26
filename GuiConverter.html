@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gui to Lua Converter</title>
+</head>
+<body>
+    <h1>Upload Your .rbxm File to Convert to Lua</h1>
+
+    <!-- File input for selecting .rbxm file -->
+    <input type="file" id="fileInput" accept=".rbxm">
+    
+    <!-- Button to trigger the conversion -->
+    <button onclick="convertFile()">Convert to Lua</button>
+
+    <!-- Area to display the converted Lua code -->
+    <pre id="output">Converted Lua code will show here.</pre>
+
+    <script>
+        function convertFile() {
+            const file = document.getElementById('fileInput').files[0];
+            if (!file) {
+                alert("Please select a .rbxm file");
+                return;
+            }
+
+            const reader = new FileReader();
+            reader.onload = function(event) {
+                // Show the file content (for now, just display the raw file data)
+                const content = event.target.result;
+                document.getElementById('output').innerText = 'File content (raw): ' + content;
+            };
+            reader.readAsText(file); // Read the file as text for now
+        }
+    </script>
+</body>
+</html>
